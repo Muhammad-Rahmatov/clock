@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>Digital Clock</title>
+    <style>
+      .clock-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f7f3f3;
+      
+      }
+
+      .clock {
+        font-size: 3rem;
+        width: 200px;
+        color: #000000;
+        border: 2px solid #605d5d;
+        border-radius: 10px;
+        padding: 10px 20px;
+        box-shadow: 0 0 20px
+        rgba(57, 245, 5, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="clock-container">
+      <div class="clock"></div>
+    </div>
+
+    <script>
+      function padTime(value){
+        return String(value).padStart(2, '0');
+      }
+      function updateClock() {
+        const now = new Date();
+        const hours = padTime(now.getHours());
+        const minutes = padTime(now.getMinutes());
+        const seconds = padTime(now.getSeconds());
+        const miliSec = Math.floor(padTime(now.getUTCMilliseconds() / 100));
+
+        console.log("now.getMonth()",now.getMonth());
+        console.log("now.getDate()",now.getDate());
+        console.log("getDay()",now.getDay());
+        console.log("now.getFullYear()",now.getFullYear());
+
+        document.querySelector('.clock').textContent= `${hours}:${minutes}:${seconds}:${miliSec}`;
+      }
+      
+       setInterval(updateClock, 1);
+       updateClock();
+    </script>
+  </body>
+</html>
